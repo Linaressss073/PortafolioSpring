@@ -27,7 +27,7 @@ public class SecurityConfig {
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/**", "/h2-console/**").permitAll()
+                        .requestMatchers("/auth/**", "/h2-console/**", "/actuator/health").permitAll()
                         .anyRequest().authenticated())
                 .build();
     }
